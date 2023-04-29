@@ -146,9 +146,10 @@ form button:hover{
   display: flex;
   align-items: center;
   justify-content: center;
+  color : rgb(255, 79, 79);
 }
 .urls-area .data li a:hover{
-  color: #20B2AA;
+  color: #fe0000;
   text-decoration: underline;
 }
 .urls-area .data li:last-child a:hover{

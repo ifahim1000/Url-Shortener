@@ -43,8 +43,18 @@ if (isset($_GET)) {
         if (mysqli_num_rows($sql2) > 0) {
         ?>
             <div class="count">
-                <span>Total Links: <span>10</span> & Total Clicks:<span>120</span> </span>
-                <a href="#"> Clear All</a>
+                <?php
+                $sql3 = mysqli_query($conn, "SELECT COUNT(*) FROM url");
+                $res = mysqli_fetch_assoc($sql3);
+
+                $sql4 = mysqli_query($conn, "SELECT clicks FROM url");
+                $total = 0;
+                while ($count = mysqli_fetch_assoc($sql4)) {
+                    $total = $count['clicks'] + $total;
+                }
+                ?>
+                <span>Total Links: <span><?php echo end($res) ?></span> & Total Clicks: <span><?php echo $total ?></span></span>
+                <a href="php/delete.php?delete=all">Clear All</a>
             </div>
             <div class="urls-area">
                 <div class="title">
@@ -72,7 +82,7 @@ if (isset($_GET)) {
     </div>
     <div class="blur-effect"></div>
     <div class="popup-box">
-        <div class="info-box">Short link is ready. You can also edit it now but can't edit once you saved it.</div>
+        <div class="info-box">Short link is ready.</div>
         <form action="#">
             <label>Edit your shorten url</label>
             <input type="text" class="shorten-url" spellcheck="false" value="" required>
