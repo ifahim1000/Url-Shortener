@@ -90,20 +90,20 @@ form button:hover{
   color: #000;
 }
 
-.wrapper .statistics{
+.wrapper .count{
   margin: 20px 0;
   display: flex;
   padding-right: 5px;
   align-items: center;
   justify-content: space-between;
 }
-.statistics span{
+.count span{
   font-size: 17px;
 }
-.statistics span span{
+.count span span{
   font-weight: 500;
 }
-.statistics a:hover{
+.count a:hover{
   color: #20B2AA;
 }
 
@@ -211,11 +211,6 @@ form button:hover{
   text-align: center;
   font-size: 17px;
   border-radius: 5px;
-}
-.popup-box .info-box.error{
-  color: #721c24;
-  background: #f8d7da;
-  border-color: #f5c6cb;
 }
 .popup-box form{
   margin-top: 10px;

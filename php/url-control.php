@@ -17,7 +17,7 @@ if (!empty($full_url) && filter_var($full_url, FILTER_VALIDATE_URL)) {
                 echo $shorten_url['shorten_url'];
             }
         }else{
-            echo "not valid 1";
+            echo "not valid";
         }
     }
 } else {

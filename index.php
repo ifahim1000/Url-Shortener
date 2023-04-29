@@ -84,8 +84,8 @@ if (isset($_GET)) {
     <div class="popup-box">
         <div class="info-box">Short link is ready.</div>
         <form action="#">
-            <label>Edit your shorten url</label>
-            <input type="text" class="shorten-url" spellcheck="false" value="" required>
+            <label>Customized shorten url</label>
+            <input type="text" class="shorten-url" spellcheck="false" value="" readonly>
             <i class="fa fa-copy copy-icon uil uil-copy-alt"></i>
             <button>Save</button>
         </form>
