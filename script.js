@@ -4,7 +4,9 @@ const form = document.querySelector(".wrapper form"),
     blurEffect = document.querySelector(".blur-effect"),
     popupBox = document.querySelector(".popup-box"),
     shortenURL = popupBox.querySelector("input"),
-    saveBtn = popupBox.querySelector("button");;
+    saveBtn = popupBox.querySelector("button"),
+    form2 = popupBox.querySelector("form"),
+    copyBtn = popupBox.querySelector("form .copy-icon");
 form.onsubmit = (e) => {
     e.preventDefault();
 }
@@ -19,7 +21,13 @@ shortenBtn.onclick = () => {
                 popupBox.classList.add("show");
                 let domain = "localhost:8888/url?u=";
                 shortenURL.value = domain + data;
-
+                copyBtn.onclick = () => {
+                    shortenURL.select();
+                    document.execCommand();
+                }
+                form2.onsubmit = (e) => {
+                    e.preventDefault();
+                }
                 saveBtn.onclick = () => {
                     location.reload();
                 }

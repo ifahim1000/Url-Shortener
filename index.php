@@ -1,11 +1,18 @@
 <?php
 include "php/config.php";
-if (isset($_GET['u'])) {
-    $u = mysqli_real_escape_string($conn, $_GET['u']);
-    $sql = mysqli_query($conn, "SELECT full_url FROM url WHERE shorten_url = '{$u}'");
+$new_url = "";
+if (isset($_GET)) {
+    foreach ($_GET as $key => $val) {
+        $u = mysqli_real_escape_string($conn, $key);
+        $new_url = str_replace('/', '', $u);
+    }
+    $sql = mysqli_query($conn, "SELECT full_url FROM url WHERE shorten_url = '{$new_url}'");
     if (mysqli_num_rows($sql) > 0) {
-        $full_url = mysqli_fetch_assoc($sql);
-        header("Location:" . $full_url['full_url']);
+        $count_query = mysqli_query($conn, "UPDATE url SET clicks = clicks + 1 WHERE shorten_url = '{$new_url}'");
+        if ($count_query) {
+            $full_url = mysqli_fetch_assoc($sql);
+            header("Location:" . $full_url['full_url']);
+        }
     }
 }
 ?>
@@ -50,7 +57,7 @@ if (isset($_GET['u'])) {
                 while ($row = mysqli_fetch_assoc($sql2)) {
                 ?>
                     <div class="data">
-                        <li><a href="#"><?php echo 'localhost:8888/url?u=' . $row['shorten_url'] ?></a></li>
+                        <li><a href="<?php echo $row['shorten_url'] ?>" target="_blank"><?php echo 'localhost:8888/url/' . $row['shorten_url'] ?></a></li>
                         <li><?php echo $row['full_url'] ?></li>
                         <li><?php echo $row['clicks'] ?></li>
                         <li><a href="#">Delete</a></li>
