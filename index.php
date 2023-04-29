@@ -60,7 +60,7 @@ if (isset($_GET)) {
                         <li><a href="<?php echo $row['shorten_url'] ?>" target="_blank"><?php echo 'localhost:8888/url/' . $row['shorten_url'] ?></a></li>
                         <li><?php echo $row['full_url'] ?></li>
                         <li><?php echo $row['clicks'] ?></li>
-                        <li><a href="#">Delete</a></li>
+                        <li><a href="php/delete.php?id=<?php echo $row['shorten_url'] ?>">Delete</a></li>
                     </div>
             <?php
                 }

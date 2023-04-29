@@ -19,11 +19,11 @@ shortenBtn.onclick = () => {
             if (data.length <= 5) {
                 blurEffect.getElementsByClassName.display = "block";
                 popupBox.classList.add("show");
-                let domain = "localhost:8888/url?u=";
+                let domain = "localhost:8888/url/";
                 shortenURL.value = domain + data;
                 copyBtn.onclick = () => {
                     shortenURL.select();
-                    document.execCommand();
+                    document.execCommand("copy");
                 }
                 form2.onsubmit = (e) => {
                     e.preventDefault();
