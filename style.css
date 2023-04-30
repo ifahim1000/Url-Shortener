@@ -14,6 +14,11 @@ body{
   background: #7eb4bf;
   padding: 0 10px;
 }
+.start{
+  text-align: center;
+  padding-bottom: 40px;
+  color: rgb(182, 37, 136);
+}
 .wrapper{
   background: #ffffff;
   padding: 20px;

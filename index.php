@@ -31,54 +31,58 @@ if (isset($_GET)) {
 </head>
 
 <body>
-
-    <div class="wrapper">
-        <form action="#">
-            <input type="text" name="full-url" placeholder="Enter a url" required>
-            <i class="fa fa-link url-icon util util-link"></i>
-            <button>Shorten</button>
-        </form>
-        <?php
-        $sql2 = mysqli_query($conn, "SELECT * FROM url ORDER BY id DESC");
-        if (mysqli_num_rows($sql2) > 0) {
-        ?>
-            <div class="count">
-                <?php
-                $sql3 = mysqli_query($conn, "SELECT COUNT(*) FROM url");
-                $res = mysqli_fetch_assoc($sql3);
-
-                $sql4 = mysqli_query($conn, "SELECT clicks FROM url");
-                $total = 0;
-                while ($count = mysqli_fetch_assoc($sql4)) {
-                    $total = $count['clicks'] + $total;
-                }
-                ?>
-                <span>Total Links: <span><?php echo end($res) ?></span> & Total Clicks: <span><?php echo $total ?></span></span>
-                <a href="php/delete.php?delete=all">Clear All</a>
-            </div>
-            <div class="urls-area">
-                <div class="title">
-                    <li>Shorten URL</li>
-                    <li>Original Link</li>
-                    <li>Clicks</li>
-                    <li>Action</li>
-                </div>
-                <?php
-                while ($row = mysqli_fetch_assoc($sql2)) {
-                ?>
-                    <div class="data">
-                        <li><a href="<?php echo $row['shorten_url'] ?>" target="_blank"><?php echo 'localhost:8888/url/' . $row['shorten_url'] ?></a></li>
-                        <li><?php echo $row['full_url'] ?></li>
-                        <li><?php echo $row['clicks'] ?></li>
-                        <li><a href="php/delete.php?id=<?php echo $row['shorten_url'] ?>">Delete</a></li>
-                    </div>
+    <div class="cover">
+        <div class="start">
+            <h1>URL Shriker</h1>
+        </div>
+        <div class="wrapper">
+            <form action="#">
+                <input type="text" name="full-url" placeholder="Enter a url" required>
+                <i class="fa fa-link url-icon util util-link"></i>
+                <button>Shorten</button>
+            </form>
             <?php
-                }
-            }
+            $sql2 = mysqli_query($conn, "SELECT * FROM url ORDER BY id DESC");
+            if (mysqli_num_rows($sql2) > 0) {
             ?>
-            </div>
+                <div class="count">
+                    <?php
+                    $sql3 = mysqli_query($conn, "SELECT COUNT(*) FROM url");
+                    $res = mysqli_fetch_assoc($sql3);
+
+                    $sql4 = mysqli_query($conn, "SELECT clicks FROM url");
+                    $total = 0;
+                    while ($count = mysqli_fetch_assoc($sql4)) {
+                        $total = $count['clicks'] + $total;
+                    }
+                    ?>
+                    <span>Total Links: <span><?php echo end($res) ?></span> & Total Clicks: <span><?php echo $total ?></span></span>
+                    <a href="php/delete.php?delete=all">Clear All</a>
+                </div>
+                <div class="urls-area">
+                    <div class="title">
+                        <li>Shorten URL</li>
+                        <li>Original Link</li>
+                        <li>Clicks</li>
+                        <li>Action</li>
+                    </div>
+                    <?php
+                    while ($row = mysqli_fetch_assoc($sql2)) {
+                    ?>
+                        <div class="data">
+                            <li><a href="<?php echo $row['shorten_url'] ?>" target="_blank"><?php echo 'localhost:8888/url/' . $row['shorten_url'] ?></a></li>
+                            <li><?php echo $row['full_url'] ?></li>
+                            <li><?php echo $row['clicks'] ?></li>
+                            <li><a href="php/delete.php?id=<?php echo $row['shorten_url'] ?>">Delete</a></li>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+                </div>
 
 
+        </div>
     </div>
     <div class="blur-effect"></div>
     <div class="popup-box">
